@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="iFf-rt-aC5">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--User Tab Bar-->
+        <scene sceneID="pd3-Oe-RTK">
+            <objects>
+                <tabBarController storyboardIdentifier="UsetTabBar" useStoryboardIdentifierAsRestorationIdentifier="YES" id="iFf-rt-aC5" customClass="UserTabBar" customModule="perfume" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" insetsLayoutMarginsFromSafeArea="NO" id="Vli-EC-pX3">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="9zJ-hB-ruk" kind="relationship" relationship="viewControllers" id="dGT-zP-nVI"/>
+                        <segue destination="TBH-yj-dCc" kind="relationship" relationship="viewControllers" id="Rzw-O6-bU2"/>
+                        <segue destination="QlD-6h-iXR" kind="relationship" relationship="viewControllers" id="bhh-Ig-Yjr"/>
+                        <segue destination="F1c-nu-hFA" kind="relationship" relationship="viewControllers" id="wow-0i-h26"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NKP-lr-UbP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-522" y="-85"/>
+        </scene>
+        <!--Markat Navigation-->
+        <scene sceneID="0uq-Lc-IT6">
+            <objects>
+                <navigationController title="Markat Navigation" id="TBH-yj-dCc" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="" image="ic_brands" selectedImage="ic_brands_active" id="GWQ-vr-BCN"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="G25-q2-eVj">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="OXe-SG-tau" kind="relationship" relationship="rootViewController" id="D6S-9h-Vq9"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ndJ-Yt-Gyc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1277" y="-100"/>
+        </scene>
+        <!--Profile Navigation-->
+        <scene sceneID="IoH-Ml-Peb">
+            <objects>
+                <navigationController title="Profile Navigation" id="F1c-nu-hFA" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="" image="ic_profile" selectedImage="ic_profile_active" id="jkb-Ai-5T3"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="O7J-4E-MbR">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="AAB-Tg-pMa" kind="relationship" relationship="rootViewController" id="10c-TV-wGR"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZnR-ue-uk7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1309" y="1710"/>
+        </scene>
+        <!--Home Navigation-->
+        <scene sceneID="q17-Ml-PGu">
+            <objects>
+                <navigationController title="Home Navigation" id="9zJ-hB-ruk" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="" image="ic_home" selectedImage="ic_home_active" id="xgs-b2-nvg"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="oKO-Um-vad">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="pDA-Os-0gA" kind="relationship" relationship="rootViewController" id="SqF-I8-QeY"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FXu-On-c9N" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1277" y="-908"/>
+        </scene>
+        <!--Search Navigation-->
+        <scene sceneID="W0s-4k-9Dd">
+            <objects>
+                <navigationController title="Search Navigation" id="QlD-6h-iXR" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="" image="ic_search" selectedImage="ic_search_active" id="O5v-qj-L3r"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="I4X-OC-9H7">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="lne-Pa-B2z" kind="relationship" relationship="rootViewController" id="ABi-Ni-gdN"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HCI-XT-v7e" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1309" y="736"/>
+        </scene>
+        <!--Brands-->
+        <scene sceneID="bj0-Kh-3FH">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Brands" id="OXe-SG-tau" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="AfQ-Pb-M89"/>
+                    <navigationItem key="navigationItem" id="ceG-Fr-4px"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9D3-HD-oBH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2162" y="-100"/>
+        </scene>
+        <!--Home-->
+        <scene sceneID="pbQ-xn-5ha">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Home" id="pDA-Os-0gA" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="ltB-dU-SIF"/>
+                    <navigationItem key="navigationItem" id="Mqy-dv-jxf"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gFy-OZ-e3H" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2091" y="-908"/>
+        </scene>
+        <!--UserAccount-->
+        <scene sceneID="owv-Y1-dmH">
+            <objects>
+                <viewControllerPlaceholder storyboardName="UserAccount" id="AAB-Tg-pMa" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="5zq-lo-tN6"/>
+                    <navigationItem key="navigationItem" id="SnH-Op-Ipq"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BWi-BW-oHn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2203" y="1710"/>
+        </scene>
+        <!--Searching-->
+        <scene sceneID="HnI-vk-hDE">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Searching" id="lne-Pa-B2z" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="Pqe-h8-BsG"/>
+                    <navigationItem key="navigationItem" id="0DK-tD-NHo"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ULW-fj-hIS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2090" y="736"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="ic_brands" width="24" height="24"/>
+        <image name="ic_brands_active" width="24" height="24"/>
+        <image name="ic_home" width="24" height="24"/>
+        <image name="ic_home_active" width="24" height="24"/>
+        <image name="ic_profile" width="24" height="24"/>
+        <image name="ic_profile_active" width="24" height="24"/>
+        <image name="ic_search" width="24" height="24"/>
+        <image name="ic_search_active" width="24" height="24"/>
+    </resources>
+</document>
