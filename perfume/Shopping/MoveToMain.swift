@@ -23,10 +23,7 @@ class MoveToMain: UIViewController {
         backBtn.addTarget(self, action: #selector(self.Dismiss), for: UIControl.Event.touchUpInside)
     }
     @objc func Dismiss() {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let linkingVC = storyboard.instantiateViewController(withIdentifier: "Main") as! MainViewController
-        let appDelegate = UIApplication.shared.delegate
-        appDelegate?.window??.rootViewController = linkingVC
+        common.openMain(currentController: self)
     }
     func drowbackButton()->UIButton {
         let notifBtn: UIButton = UIButton(type: UIButton.ButtonType.custom)

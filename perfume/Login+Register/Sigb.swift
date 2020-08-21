@@ -14,6 +14,7 @@ class Sign: common, UIScrollViewDelegate{
     @IBOutlet var ScrollView : UIScrollView!
     @IBOutlet var BagroundImage : UIImageView!
     
+    @IBOutlet var policyStack : UIStackView!
     @IBOutlet var pageTitle : UILabel!
     @IBOutlet var PageDescription : UILabel!
     
@@ -32,8 +33,7 @@ class Sign: common, UIScrollViewDelegate{
             PageDescription.text = "عدل معلوماتك الان"
             name.text = CashedData.getUserName() ?? ""
             email.text = CashedData.getUserEmail() ?? ""
-            pass.isSecureTextEntry = false
-            configPass.isSecureTextEntry = false
+            policyStack.isHidden = true
         }
         ScrollView.delegate = self
     }
@@ -52,10 +52,7 @@ class Sign: common, UIScrollViewDelegate{
         if let mainVC = self.parent as? MainViewController {
             mainVC.hideSideMenu()
         }
-        let storyboard = UIStoryboard(name: "Setting", bundle: nil)
-        let linkingVC = storyboard.instantiateViewController(withIdentifier: "Policy") as! UINavigationController
-        linkingVC.modalPresentationStyle = .fullScreen
-        self.present(linkingVC,animated: true,completion: nil)
+        openSetting(pagTitle: "Policy")
     }
     
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -117,11 +114,9 @@ class Sign: common, UIScrollViewDelegate{
                             CashedData.saveUserApiKey(token: user?.accessToken ?? "")
                             CashedData.saveUserUpdateKey(token: user?.accessToken ?? "")
                         }
-                        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                        let linkingVC = storyboard.instantiateViewController(withIdentifier: "Main") as! MainViewController
-                        let appDelegate = UIApplication.shared.delegate
-                        appDelegate?.window??.rootViewController = linkingVC
-                       
+                        
+                        
+                        self.openMain()
                         self.stopAnimating()
                     }else{
                         let dataRecived = try decoder.decode(ErrorHandle.self, from: jsonData)

@@ -18,6 +18,7 @@ class perfumeResults: common {
     var maps: Dictionary<String,Any> = [:]
     var pagTitle: String = ""
     var noData = false
+    var total = 0
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -35,11 +36,12 @@ class perfumeResults: common {
     }
     func getMoreProducts(){
         getProducts(url: nextPageUrl,maps: maps){
-            (data , nextPageUrl) in
+            (data , nextPageUrl,total) in
             self.nextPageUrl = nextPageUrl
             self.noData = data?.count ?? 0 == 0
             self.productsResults.append(contentsOf: data ?? [])
             self.ResultsCount.text = "\(self.productsResults.count)"
+            self.total = total
             self.ResultsCollection.reloadData()
         }
     }
@@ -86,7 +88,7 @@ extension perfumeResults: UICollectionViewDelegateFlowLayout,UICollectionViewDel
             cell.noData.text = "لا يوجد بيانات متطابقة حاليا"
             return cell
         }
-        if indexPath.row == self.productsResults.count - 1{
+        if indexPath.row == self.productsResults.count - 1 && self.productsResults.count != self.total{
             getMoreProducts()
         }
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "perfumeResults", for: indexPath) as! perfumeResultsCell
@@ -120,11 +122,7 @@ extension perfumeResults: UICollectionViewDelegateFlowLayout,UICollectionViewDel
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        let storyboard = UIStoryboard(name: "perfumeDetails", bundle: nil)
-        let linkingVC = storyboard.instantiateViewController(withIdentifier: "perfumeDetails")  as! UINavigationController
-        let VC = linkingVC.viewControllers[0] as! perfumeDetails
-        VC.productDetails = self.productsResults[indexPath.row]
-        self.present(linkingVC, animated: true)
+        openPerfumeDetails(productDetails: self.productsResults[indexPath.row])
         
     }
 }

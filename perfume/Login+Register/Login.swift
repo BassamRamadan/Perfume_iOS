@@ -55,11 +55,7 @@ class Login: common , UIScrollViewDelegate{
                         CashedData.saveUserPassword(name: self.password.text ?? "")
                         self.navigationController?.dismiss(animated: true)
                         
-                        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                        let linkingVC = storyboard.instantiateViewController(withIdentifier: "Main") as! MainViewController
-                        let appDelegate = UIApplication.shared.delegate
-                        appDelegate?.window??.rootViewController = linkingVC
-                       
+                        self.openMain()
                         self.stopAnimating()
                         
                     }else{
@@ -83,15 +79,11 @@ class Login: common , UIScrollViewDelegate{
         BagroundImage.transform = CGAffineTransform(translationX: 0, y: ((ScrollView.contentOffset.y/2)+22) * -1)
     }
     @IBAction func sign(_ sender: UIButton) {
-        let storyboard = UIStoryboard(name: "Login", bundle: nil)
-        let linkingVC = storyboard.instantiateViewController(withIdentifier: "Sign")  as! UINavigationController
-        self.present(linkingVC, animated: true, completion: nil)
+        openRegisteringPage(pagTitle: "Sign")
     }
     
     @IBAction func forgetPass(_ sender: UIButton) {
-        let storyboard = UIStoryboard(name: "Login", bundle: nil)
-        let linkingVC = storyboard.instantiateViewController(withIdentifier: "forgetPass")  as! UINavigationController
-        self.present(linkingVC, animated: true, completion: nil)
+        openRegisteringPage(pagTitle: "forgetPass")
     }
     @IBAction func back(_ sender: UIButton) {
        self.navigationController?.dismiss(animated: true)

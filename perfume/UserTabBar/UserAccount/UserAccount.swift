@@ -34,10 +34,7 @@ class UserAccount: ContentViewController ,UIImagePickerControllerDelegate,UINavi
         super.viewWillAppear(animated)
         
         if CashedData.getUserApiKey() == ""{
-            let storyboard = UIStoryboard(name: "Login", bundle: nil)
-            let linkingVC = storyboard.instantiateViewController(withIdentifier: "Login") as! UINavigationController
-            let appDelegate = UIApplication.shared.delegate
-            appDelegate?.window??.rootViewController = linkingVC
+            openRegisteringPage(pagTitle: "Login",window: true)
         }else{
             getOrdersData(url: "https://services-apps.net/perfumecorner/public/api/my-orders?status=sent")
             getFavorite{

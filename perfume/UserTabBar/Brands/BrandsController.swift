@@ -16,6 +16,7 @@ class BrandsController: ContentViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
         AppDelegate.firstBadge[1] = true
         getBrands()
     }
@@ -76,11 +77,6 @@ extension BrandsController: UICollectionViewDataSource , UICollectionViewDelegat
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
         
-        let storyboard = UIStoryboard(name: "perfumeResults", bundle: nil)
-        let linkingVC = storyboard.instantiateViewController(withIdentifier: "perfumeNav")  as! UINavigationController
-        let linkVC = linkingVC.viewControllers[0] as! perfumeResults
-        linkVC.maps = ["brands_ids":[self.Brands[indexPath.row].id ?? 0]]
-        linkVC.pagTitle = self.Brands[indexPath.row].name ?? ""
-        self.present(linkingVC, animated: true, completion: nil)
+        openPerfumeResults(maps: ["brands_ids":[self.Brands[indexPath.row].id ?? 0]], pagTitle: self.Brands[indexPath.row].name ?? "")
     }
 }

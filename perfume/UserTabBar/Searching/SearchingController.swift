@@ -11,7 +11,8 @@ import UIKit
 class SearchingController: ContentViewController {
     // MARK:- Outlets
     @IBOutlet var wordsCollection: UICollectionView!
-    var textArray: Array<publicFilteringData> = []
+    var searchContent: Array<publicFilteringData> = []
+    var searchJSON = [String]()
     @IBOutlet var moreViewsPerfumes: UITableView!
     @IBOutlet var moreViewsPerfumesHeight: NSLayoutConstraint!
     
@@ -27,7 +28,7 @@ class SearchingController: ContentViewController {
 
         getFourMainCategory()
         self.getProducts(maps: ["most_viewed":true]){
-            (data , nextPageUrl) in
+            (data , nextPageUrl,total) in
             self.moreViewsResults.removeAll()
             self.moreViewsResults.append(contentsOf: data ?? [])
             self.moreViewsPerfumes.reloadData()
@@ -41,29 +42,32 @@ class SearchingController: ContentViewController {
     fileprivate func getFourMainCategory() {
         self.getBrands(){
             (data) in
-            self.ConvertToField("ماركة العطر", data)
+            self.ConvertToField("ماركة العطر", data, "brands_ids")
         }
         self.getGenders(){
             (data) in
-            self.ConvertToField("الجنس", data)
+            self.ConvertToField("الجنس", data, "genders")
         }
         self.getTypes(){
             (data) in
-            self.ConvertToField("النوع", data)
+            self.ConvertToField("النوع", data, "types")
         }
         self.getConcentrations(){
             (data) in
-            self.ConvertToField("التركيز", data)
+            self.ConvertToField("التركيز", data, "")
         }
     }
     
-    fileprivate func ConvertToField(_ name: String,_ data: [publicFilteringData]) {
+    fileprivate func ConvertToField(_ name: String,_ data: [publicFilteringData],_ json: String) {
         guard data.count != 0 else{
             return
         }
-        self.textArray.append(contentsOf: data)
+        for _ in data{
+            self.searchJSON.append(json)
+        }
+        self.searchContent.append(contentsOf: data)
         self.wordsCollection.reloadData()
-        self.wordsCollection.scrollToItem(at: NSIndexPath(item: self.textArray.count - 1, section: 0) as IndexPath, at: .right, animated: false)
+        self.wordsCollection.scrollToItem(at: NSIndexPath(item: self.searchContent.count - 1, section: 0) as IndexPath, at: .right, animated: true)
     }
     func moreViewsUpdateConstraints(){
         moreViewsPerfumes.layoutIfNeeded()
@@ -71,16 +75,7 @@ class SearchingController: ContentViewController {
     }
     // MARK:-  Actions
     @IBAction func toResults(sender: UIButton){
-        
-        let storyboard = UIStoryboard(name: "perfumeResults", bundle: nil)
-        let linkingVC = storyboard.instantiateViewController(withIdentifier: "perfumeNav")  as! UINavigationController
-        let linkVC = linkingVC.viewControllers[0] as! perfumeResults
-       
-        linkVC.maps = ["most_viewed":true]
-        linkVC.pagTitle = "الأكثر مشاهدة"
-        
-        
-        self.present(linkingVC, animated: true, completion: nil)
+       openPerfumeResults(maps: ["most_viewed":true], pagTitle: "الأكثر مشاهدة")
     }
     @IBAction func AddMoreViewsPerfumeToCart(sender: UIButton){
         
@@ -97,21 +92,26 @@ class SearchingController: ContentViewController {
 }
 extension SearchingController: UICollectionViewDelegate,UICollectionViewDataSource , UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return textArray.count
+        return searchContent.count
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let label = UILabel(frame: CGRect.zero)
-        label.text = textArray[indexPath.item].name
+        label.text = searchContent[indexPath.item].name
         label.sizeToFit()
         return CGSize(width: label.frame.width + 80, height: 50)
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "searchId", for: indexPath) as! SearchingCell
-        cell.word.text = textArray[indexPath.row].name
+        cell.word.text = searchContent[indexPath.row].name
         return cell
     }
     
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        collectionView.deselectItem(at: indexPath, animated: true)
+       
+        openPerfumeResults(maps: [searchJSON[indexPath.row]:[searchContent[indexPath.row].id ?? 0]], pagTitle: searchContent[indexPath.item].name ?? "عطور")
+        
+    }
     
     
 }
@@ -149,10 +149,7 @@ extension SearchingController: UITableViewDelegate , UITableViewDataSource{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        let storyboard = UIStoryboard(name: "perfumeDetails", bundle: nil)
-        let linkingVC = storyboard.instantiateViewController(withIdentifier: "perfumeDetails")  as! UINavigationController
-        let VC = linkingVC.viewControllers[0] as! perfumeDetails
-        VC.productDetails = self.moreViewsResults[indexPath.row]
-        self.present(linkingVC, animated: true)
+        openPerfumeDetails(productDetails: self.moreViewsResults[indexPath.row])
     }
+    
 }

@@ -1018,6 +1018,7 @@
                         <outlet property="name" destination="fcE-YJ-Nyf" id="YpG-O2-Ih8"/>
                         <outlet property="pageTitle" destination="QFP-4Q-QNO" id="wzP-W7-wv1"/>
                         <outlet property="pass" destination="RP2-7m-KFa" id="Opd-jn-KWG"/>
+                        <outlet property="policyStack" destination="GqL-w4-bcY" id="0zC-bS-GJ5"/>
                         <outlet property="submit" destination="0I6-xi-tYH" id="K1E-P1-Chv"/>
                     </connections>
                 </viewController>

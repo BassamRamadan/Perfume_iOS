@@ -48,9 +48,7 @@ class forgetPass: common, UIScrollViewDelegate{
                 if error == nil{
                     if success{
                         
-                        let storyboard = UIStoryboard(name: "Login", bundle: nil)
-                        let linkingVC = storyboard.instantiateViewController(withIdentifier: "resetPass")  as! UINavigationController
-                        self.present(linkingVC, animated: true, completion: nil)
+                        self.openRegisteringPage(pagTitle: "resetPass")
                         self.stopAnimating()
                     }else{
                         let dataRecived = try decoder.decode(ErrorHandle.self, from: jsonData)

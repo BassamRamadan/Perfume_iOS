@@ -61,7 +61,7 @@ class perfumeDetails: ContentViewController{
             self.stopAnimating()
         }
         getProducts(maps: ["brands_ids":[productDetails?.brand?.id ?? 0]]){
-            (data , nextPageUrl) in
+            (data , nextPageUrl,total)  in
             self.RelatedProducts.removeAll()
             self.RelatedProducts.append(contentsOf: data ?? [])
             for (i,x) in self.RelatedProducts.enumerated(){

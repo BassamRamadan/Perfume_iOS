@@ -17,6 +17,7 @@ class AboutUs: common {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.navigationItem.title = "حول التطبيق"
         setupBackButtonWithDismiss()
         getAboutData()
     }

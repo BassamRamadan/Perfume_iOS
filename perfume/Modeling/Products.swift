@@ -26,13 +26,16 @@ class Products: Codable {
 class ProductsData: Codable {
     let products: [Product]?
     let nextPageUrl: String?
+    let total: Int?
     enum CodingKeys: String, CodingKey {
         case products = "data"
         case nextPageUrl = "next_page_url"
+        case total
     }
-    init(products: [Product]?,nextPageUrl: String?) {
+    init(products: [Product]?,nextPageUrl: String?,total: Int?) {
         self.products = products
         self.nextPageUrl = nextPageUrl
+        self.total = total
     }
 }
 class oneProduct: Codable {

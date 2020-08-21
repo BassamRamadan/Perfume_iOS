@@ -214,30 +214,21 @@ class menuController: common, UITableViewDelegate, UITableViewDataSource {
             if let mainVC = self.parent as? MainViewController {
                 mainVC.hideSideMenu()
             }
-            let storyboard = UIStoryboard(name: "Setting", bundle: nil)
-            let linkingVC = storyboard.instantiateViewController(withIdentifier: "ContactUs") as! UINavigationController
-            linkingVC.modalPresentationStyle = .fullScreen
-            self.present(linkingVC,animated: true,completion: nil)
+            openSetting(pagTitle: "ContactUs")
         }
         
         @IBAction func AboutUs(_ sender: Any){
             if let mainVC = self.parent as? MainViewController {
                 mainVC.hideSideMenu()
             }
-            let storyboard = UIStoryboard(name: "Setting", bundle: nil)
-            let linkingVC = storyboard.instantiateViewController(withIdentifier: "AboutUs") as! UINavigationController
-            linkingVC.modalPresentationStyle = .fullScreen
-            self.present(linkingVC,animated: true,completion: nil)
+            openSetting(pagTitle: "AboutUs")
         }
         
         @IBAction func Policy(_ sender: Any){
             if let mainVC = self.parent as? MainViewController {
                 mainVC.hideSideMenu()
             }
-            let storyboard = UIStoryboard(name: "Setting", bundle: nil)
-            let linkingVC = storyboard.instantiateViewController(withIdentifier: "Policy") as! UINavigationController
-            linkingVC.modalPresentationStyle = .fullScreen
-            self.present(linkingVC,animated: true,completion: nil)
+            openSetting(pagTitle: "Policy")
            
         }
     

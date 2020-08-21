@@ -22,17 +22,18 @@ class HomeViewController: ContentViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.navigationItem.title = "الرئيسية"
         AppDelegate.firstBadge[0] = true
         getGenders()
         self.getProducts(maps: [:]){
-            (data , nextPageUrl) in
+            (data , nextPageUrl,total) in
             self.newResults.removeAll()
             self.newResults.append(contentsOf: data ?? [])
             self.newPerfumes.reloadData()
             self.updateConstraints()
         }
         self.getProducts(maps: ["most_viewed":true]){
-            (data , nextPageUrl) in
+            (data , nextPageUrl,total) in
             self.moreViewsResults.removeAll()
             self.moreViewsResults.append(contentsOf: data ?? [])
             self.moreViewsPerfumes.reloadData()
@@ -54,18 +55,7 @@ class HomeViewController: ContentViewController{
     }
     // MARK:-  Actions
     @IBAction func toResults(sender: UIButton){
-        
-        let storyboard = UIStoryboard(name: "perfumeResults", bundle: nil)
-        let linkingVC = storyboard.instantiateViewController(withIdentifier: "perfumeNav")  as! UINavigationController
-        let linkVC = linkingVC.viewControllers[0] as! perfumeResults
-        linkVC.maps = [:]
-        linkVC.pagTitle = "جديد وحصري"
-        if sender.tag == 2{
-            linkVC.maps = ["most_viewed":true]
-            linkVC.pagTitle = "الأكثر مشاهدة"
-        }
-        
-        self.present(linkingVC, animated: true, completion: nil)
+        openPerfumeResults(maps: sender.tag == 2 ? ["most_viewed":true] : [:], pagTitle: sender.tag == 2 ?  "جديد وحصرى": "الأكثر مشاهدة")
     }
     // MARK:-  Alamofire
     fileprivate func getGenders(){
@@ -210,11 +200,6 @@ extension HomeViewController: UITableViewDelegate , UITableViewDataSource{
             cellData = self.moreViewsResults[indexPath.row]
         }
         
-        
-        let storyboard = UIStoryboard(name: "perfumeDetails", bundle: nil)
-        let linkingVC = storyboard.instantiateViewController(withIdentifier: "perfumeDetails")  as! UINavigationController
-        let VC = linkingVC.viewControllers[0] as! perfumeDetails
-        VC.productDetails = cellData
-        self.present(linkingVC, animated: true)
+        openPerfumeDetails(productDetails: cellData)
     }
 }

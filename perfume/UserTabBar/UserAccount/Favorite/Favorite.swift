@@ -26,9 +26,12 @@ class Favorite: common{
             nav.setNavigationBarHidden(true, animated: true)
             nav.setToolbarHidden(true, animated: true)
         }
-        self.itemCount.text = "\(favoriteItems.count)"
-        self.noData = (favoriteItems.count == 0)
-        self.favoriteTable.reloadData()
+        getFavorite{
+            (data) in
+            self.itemCount.text = "\(self.favoriteItems.count)"
+            self.noData = (self.favoriteItems.count == 0)
+            self.favoriteTable.reloadData()
+        }
     }
   
     
@@ -106,13 +109,8 @@ extension Favorite: UITableViewDelegate , UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        let storyboard = UIStoryboard(name: "perfumeDetails", bundle: nil)
-        let linkingVC = storyboard.instantiateViewController(withIdentifier: "perfumeDetails")  as! UINavigationController
-        let VC = linkingVC.viewControllers[0] as! perfumeDetails
-        VC.productDetails = self.favoriteItems[indexPath.row]
         AppDelegate.firstBadge[4] = true
-        self.present(linkingVC, animated: true)
-        
+        openPerfumeDetails(productDetails: self.favoriteItems[indexPath.row])
     }
     
 }

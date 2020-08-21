@@ -20,7 +20,11 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-    
+        for i in 0..<5{
+            AppDelegate.badge[i].removeFromSuperlayer()
+            AppDelegate.badge[i] = CAShapeLayer()
+            AppDelegate.firstBadge[i] = true
+        }
        self.sideMenuTrailing.constant = 0 - self.sideMenu.frame.size.width
     }
     func hideSideMenu() {

@@ -42,17 +42,45 @@ class common : UIViewController , NVActivityIndicatorViewable{
         sender.present(linkingVC, animated: true, completion: nil)
     }
     
+    func openPerfumeResults(maps: Dictionary<String,Any>,pagTitle:String){
+        let storyboard = UIStoryboard(name: "perfumeResults", bundle: nil)
+        let linkingVC = storyboard.instantiateViewController(withIdentifier: "perfumeNav")  as! UINavigationController
+        let linkVC = linkingVC.viewControllers[0] as! perfumeResults
+        linkVC.maps = maps
+        linkVC.pagTitle = pagTitle
+        self.present(linkingVC, animated: true, completion: nil)
+    }
 
-    class func isAdminLogedin()-> Bool{
-        let token = CashedData.getAdminApiKey() ?? ""
-        if token.isEmpty{
-            return false
-        }else{
-            return true
-        }
-        
+    func openPerfumeDetails(productDetails : Product?){
+        let storyboard = UIStoryboard(name: "perfumeDetails", bundle: nil)
+        let linkingVC = storyboard.instantiateViewController(withIdentifier: "perfumeDetails")  as! UINavigationController
+        let VC = linkingVC.viewControllers[0] as! perfumeDetails
+        VC.productDetails = productDetails
+        self.present(linkingVC, animated: true)
     }
     
+    func openSetting(pagTitle:String){
+        let storyboard = UIStoryboard(name: "Setting", bundle: nil)
+        let linkingVC = storyboard.instantiateViewController(withIdentifier: pagTitle) as! UINavigationController
+        linkingVC.modalPresentationStyle = .fullScreen
+        self.present(linkingVC,animated: true,completion: nil)
+    }
+    func openRegisteringPage(pagTitle:String,window: Bool = false){
+        let storyboard = UIStoryboard(name: "Login", bundle: nil)
+        let linkingVC = storyboard.instantiateViewController(withIdentifier: pagTitle) as! UINavigationController
+        if window{
+            let appDelegate = UIApplication.shared.delegate
+            appDelegate?.window??.rootViewController = linkingVC
+        }else{
+            self.present(linkingVC,animated: true,completion: nil)
+        }
+    }
+    func openMain(){
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let linkingVC = storyboard.instantiateViewController(withIdentifier: "Main") as! MainViewController
+        let appDelegate = UIApplication.shared.delegate
+        appDelegate?.window??.rootViewController = linkingVC
+    }
     class func AdminLogout(currentController: UIViewController){
             CashedData.saveUserApiKey(token: "")
             openMain(currentController: currentController)
@@ -368,7 +396,7 @@ extension common {
         }
     }
     
-    func getProducts(url:String? = AppDelegate.LocalUrl + "/products",maps: Dictionary<String,Any> = [:],complition : @escaping (_ CartItems: [Product]?,_ url:String)->Void){
+    func getProducts(url:String? = AppDelegate.LocalUrl + "/products",maps: Dictionary<String,Any> = [:],complition : @escaping (_ CartItems: [Product]?,_ url:String,_ total:Int)->Void){
         
         let headers = [
             "Content-Type": "application/json" ,
@@ -383,7 +411,7 @@ extension common {
                     if success {
                         let dataReceived = try decoder.decode(Products.self, from: jsonData)
                         
-                        complition(dataReceived.data?.products ?? [],dataReceived.data?.nextPageUrl ?? "")
+                        complition(dataReceived.data?.products ?? [],dataReceived.data?.nextPageUrl ?? "",dataReceived.data?.total ?? 0)
                      
                     }else{
                         self.present(common.makeAlert(), animated: true, completion: nil)

@@ -17,6 +17,7 @@ class Policy: common {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.navigationItem.title = "سياسة الأستخدام"
         setupBackButtonWithDismiss()
         getPolicy()
     }

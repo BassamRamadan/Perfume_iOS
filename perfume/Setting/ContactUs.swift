@@ -19,6 +19,7 @@ class ContactUs: common {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.navigationItem.title = "إتصل بنا"
         let tap = UITapGestureRecognizer(target: self, action: #selector(ok(reg:)))
         view.addGestureRecognizer(tap)
         setupBackButtonWithDismiss()

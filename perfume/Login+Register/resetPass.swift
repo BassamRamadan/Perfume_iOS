@@ -50,11 +50,7 @@ class resetPassword: common, UIScrollViewDelegate{
                 if error == nil{
                     if success{
                         
-                        let storyboard = UIStoryboard(name: "Login", bundle: nil)
-                        let linkingVC = storyboard.instantiateViewController(withIdentifier: "Login") as! UINavigationController
-                        let appDelegate = UIApplication.shared.delegate
-                        appDelegate?.window??.rootViewController = linkingVC
-                        
+                        self.openRegisteringPage(pagTitle: "Login",window: true)
                         self.stopAnimating()
                     }else{
                         let dataRecived = try decoder.decode(ErrorHandle.self, from: jsonData)

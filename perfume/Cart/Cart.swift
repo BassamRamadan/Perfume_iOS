@@ -78,6 +78,7 @@ class Cart: common {
         if self.CartItems?.items?.count ?? 0 == 0{
             return
         }
+        
         let storyboard = UIStoryboard(name: "Shopping", bundle: nil)
         let linkingVC = storyboard.instantiateViewController(withIdentifier: "Shopping") as! ShoppingAndPaymentInformation
         linkingVC.CartId = self.CartItems?.cartID
