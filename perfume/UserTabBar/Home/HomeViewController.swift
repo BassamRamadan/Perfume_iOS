@@ -55,8 +55,13 @@ class HomeViewController: ContentViewController{
     }
     // MARK:-  Actions
     @IBAction func toResults(sender: UIButton){
-        openPerfumeResults(maps: sender.tag == 2 ? ["most_viewed":true] : [:], pagTitle: sender.tag == 2 ?  "جديد وحصرى": "الأكثر مشاهدة")
+        if sender.tag == 2{
+            openPerfumeResults(maps: ["most_viewed":true], pagTitle: "الأكثر مشاهدة")
+        }else{
+            openPerfumeResults(maps: [:], pagTitle: "جديد وحصرى")
+        }
     }
+    
     // MARK:-  Alamofire
     fileprivate func getGenders(){
         self.loading()

@@ -17,3 +17,6 @@ class menuContentCell: UITableViewCell {
     @IBOutlet var title: UILabel!
     @IBOutlet var count: UILabel!
 }
+class categoryCell: UICollectionViewCell {
+    @IBOutlet var title: UILabel!
+}

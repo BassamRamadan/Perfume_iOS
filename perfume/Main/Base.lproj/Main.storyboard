@@ -11,14 +11,14 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="DroidNaskh-Bold.ttf">
-            <string>DroidArabicNaskh-Bold</string>
-        </array>
         <array key="SefidUI-500-Medium.ttf">
             <string>SefidUI-Medium</string>
         </array>
         <array key="SefidUI-700-Bold.ttf">
             <string>SefidUI-Bold</string>
+        </array>
+        <array key="boldfont.ttf">
+            <string>DroidArabicNaskh-Bold</string>
         </array>
     </customFonts>
     <scenes>
@@ -78,10 +78,10 @@
                                 <rect key="frame" x="0.0" y="0.0" width="331" height="896"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k9v-fU-ahJ">
-                                        <rect key="frame" x="0.0" y="0.0" width="331" height="842"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="331" height="750"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="BqD-Op-7bJ">
-                                                <rect key="frame" x="0.0" y="0.0" width="331" height="842"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="331" height="750"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fuB-sM-m59" userLabel="userDetailsView">
                                                         <rect key="frame" x="0.0" y="0.0" width="331" height="300"/>
@@ -92,8 +92,9 @@
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="bottom" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="YUb-wt-NZW">
                                                                 <rect key="frame" x="0.0" y="50" width="311" height="250"/>
                                                                 <subviews>
-                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="test" translatesAutoresizingMaskIntoConstraints="NO" id="VZy-qF-mxF" customClass="imageShadow" customModule="perfume" customModuleProvider="target">
+                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="VZy-qF-mxF" customClass="imageShadow" customModule="perfume" customModuleProvider="target">
                                                                         <rect key="frame" x="231" y="0.0" width="80" height="80"/>
+                                                                        <color key="backgroundColor" name="white"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" constant="80" id="5nN-xh-KbX"/>
                                                                             <constraint firstAttribute="height" constant="80" id="9mi-na-cCS"/>
@@ -105,16 +106,16 @@
                                                                         </userDefinedRuntimeAttributes>
                                                                     </imageView>
                                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="bottom" translatesAutoresizingMaskIntoConstraints="NO" id="ZGf-Ib-JLe">
-                                                                        <rect key="frame" x="180.5" y="90" width="130.5" height="58"/>
+                                                                        <rect key="frame" x="196.5" y="90" width="114.5" height="80.5"/>
                                                                         <subviews>
-                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="سرور رشاد" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xGg-CE-EiS">
-                                                                                <rect key="frame" x="46" y="0.0" width="84.5" height="30.5"/>
+                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="عليك التسجيل" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xGg-CE-EiS">
+                                                                                <rect key="frame" x="0.0" y="0.0" width="114.5" height="30.5"/>
                                                                                 <fontDescription key="fontDescription" name="SefidUI-Bold" family="Sefid UI" pointSize="20"/>
                                                                                 <color key="textColor" name="white"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
-                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="sror@gmail.com" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kxH-hR-u50">
-                                                                                <rect key="frame" x="0.0" y="30.5" width="130.5" height="27.5"/>
+                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kxH-hR-u50">
+                                                                                <rect key="frame" x="64.5" y="30.5" width="50" height="50"/>
                                                                                 <fontDescription key="fontDescription" name="SefidUI-Medium" family="Sefid UI" pointSize="18"/>
                                                                                 <color key="textColor" name="Very Soft Orange."/>
                                                                                 <nil key="highlightedColor"/>
@@ -122,7 +123,7 @@
                                                                         </subviews>
                                                                     </stackView>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oU2-DY-klj">
-                                                                        <rect key="frame" x="261" y="158" width="50" height="92"/>
+                                                                        <rect key="frame" x="261" y="180.5" width="50" height="69.5"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
@@ -214,10 +215,10 @@
                                                         </connections>
                                                     </tableView>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m0q-XX-buK" userLabel="SettingView">
-                                                        <rect key="frame" x="0.0" y="432" width="331" height="410"/>
+                                                        <rect key="frame" x="0.0" y="432" width="331" height="318"/>
                                                         <subviews>
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="CIa-tX-CqF">
-                                                                <rect key="frame" x="20" y="20" width="291" height="390"/>
+                                                                <rect key="frame" x="20" y="20" width="291" height="298"/>
                                                                 <subviews>
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mZi-kE-pr0" userLabel="seperator">
                                                                         <rect key="frame" x="0.0" y="0.0" width="291" height="30"/>
@@ -238,133 +239,69 @@
                                                                             <constraint firstAttribute="height" constant="30" id="UsD-wa-btD"/>
                                                                         </constraints>
                                                                     </view>
-                                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vea-iO-PZV">
-                                                                        <rect key="frame" x="0.0" y="35" width="291" height="40"/>
-                                                                        <subviews>
-                                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" image="ic_left_arrow" translatesAutoresizingMaskIntoConstraints="NO" id="d6B-qv-haY">
-                                                                                <rect key="frame" x="0.0" y="10" width="20" height="20"/>
-                                                                            </imageView>
-                                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CA0-hq-jRc">
-                                                                                <rect key="frame" x="0.0" y="0.0" width="291" height="40"/>
-                                                                                <fontDescription key="fontDescription" name="SefidUI-Bold" family="Sefid UI" pointSize="17"/>
-                                                                                <state key="normal" title="نيش بوتيك">
-                                                                                    <color key="titleColor" name="very dark blue"/>
-                                                                                </state>
-                                                                            </button>
-                                                                        </subviews>
+                                                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="mgj-Lm-Toy">
+                                                                        <rect key="frame" x="0.0" y="35" width="291" height="128"/>
                                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <constraints>
-                                                                            <constraint firstItem="d6B-qv-haY" firstAttribute="centerY" secondItem="Vea-iO-PZV" secondAttribute="centerY" id="8et-6c-thA"/>
-                                                                            <constraint firstAttribute="bottom" secondItem="CA0-hq-jRc" secondAttribute="bottom" id="BNg-dC-Krg"/>
-                                                                            <constraint firstItem="d6B-qv-haY" firstAttribute="leading" secondItem="Vea-iO-PZV" secondAttribute="leading" id="UE7-VS-rwk"/>
-                                                                            <constraint firstAttribute="trailing" secondItem="CA0-hq-jRc" secondAttribute="trailing" id="alk-vu-HkE"/>
-                                                                            <constraint firstItem="CA0-hq-jRc" firstAttribute="leading" secondItem="Vea-iO-PZV" secondAttribute="leading" id="eTg-kd-nfb"/>
-                                                                            <constraint firstItem="CA0-hq-jRc" firstAttribute="top" secondItem="Vea-iO-PZV" secondAttribute="top" id="m1p-BI-kwl"/>
-                                                                            <constraint firstAttribute="height" constant="40" id="woF-8I-6qS"/>
+                                                                            <constraint firstAttribute="height" constant="128" id="011-cb-Yem"/>
                                                                         </constraints>
-                                                                    </view>
-                                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aoJ-4E-vgV">
-                                                                        <rect key="frame" x="0.0" y="80" width="291" height="40"/>
-                                                                        <subviews>
-                                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" image="ic_left_arrow" translatesAutoresizingMaskIntoConstraints="NO" id="Wzg-TO-EaV">
-                                                                                <rect key="frame" x="0.0" y="10" width="20" height="20"/>
-                                                                            </imageView>
-                                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z4T-kk-r1J">
-                                                                                <rect key="frame" x="0.0" y="0.0" width="291" height="40"/>
-                                                                                <fontDescription key="fontDescription" name="SefidUI-Bold" family="Sefid UI" pointSize="17"/>
-                                                                                <state key="normal" title="العطور العربية">
-                                                                                    <color key="titleColor" name="very dark blue"/>
-                                                                                </state>
-                                                                            </button>
-                                                                        </subviews>
-                                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                        <constraints>
-                                                                            <constraint firstItem="z4T-kk-r1J" firstAttribute="leading" secondItem="aoJ-4E-vgV" secondAttribute="leading" id="A8s-9H-h7v"/>
-                                                                            <constraint firstItem="Wzg-TO-EaV" firstAttribute="leading" secondItem="aoJ-4E-vgV" secondAttribute="leading" id="Wql-k1-55P"/>
-                                                                            <constraint firstAttribute="bottom" secondItem="z4T-kk-r1J" secondAttribute="bottom" id="d09-y3-YDP"/>
-                                                                            <constraint firstAttribute="trailing" secondItem="z4T-kk-r1J" secondAttribute="trailing" id="gHx-gv-MbQ"/>
-                                                                            <constraint firstItem="Wzg-TO-EaV" firstAttribute="centerY" secondItem="aoJ-4E-vgV" secondAttribute="centerY" id="sv4-Js-iPd"/>
-                                                                            <constraint firstItem="z4T-kk-r1J" firstAttribute="top" secondItem="aoJ-4E-vgV" secondAttribute="top" id="tMQ-2X-hOC"/>
-                                                                            <constraint firstAttribute="height" constant="40" id="uqx-6W-qNG"/>
-                                                                        </constraints>
-                                                                    </view>
-                                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bFV-DS-jXN">
-                                                                        <rect key="frame" x="0.0" y="125" width="291" height="40"/>
-                                                                        <subviews>
-                                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" image="ic_left_arrow" translatesAutoresizingMaskIntoConstraints="NO" id="Q9X-1M-mdW">
-                                                                                <rect key="frame" x="0.0" y="10" width="20" height="20"/>
-                                                                            </imageView>
-                                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4xC-Du-TFm">
-                                                                                <rect key="frame" x="0.0" y="0.0" width="291" height="40"/>
-                                                                                <fontDescription key="fontDescription" name="SefidUI-Bold" family="Sefid UI" pointSize="17"/>
-                                                                                <state key="normal" title="عروض وتخفيضات">
-                                                                                    <color key="titleColor" name="very dark blue"/>
-                                                                                </state>
-                                                                            </button>
-                                                                        </subviews>
-                                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                        <constraints>
-                                                                            <constraint firstItem="4xC-Du-TFm" firstAttribute="top" secondItem="bFV-DS-jXN" secondAttribute="top" id="27o-2y-fwX"/>
-                                                                            <constraint firstAttribute="bottom" secondItem="4xC-Du-TFm" secondAttribute="bottom" id="9Dc-m5-1hu"/>
-                                                                            <constraint firstAttribute="trailing" secondItem="4xC-Du-TFm" secondAttribute="trailing" id="9LZ-f6-KhA"/>
-                                                                            <constraint firstItem="Q9X-1M-mdW" firstAttribute="centerY" secondItem="bFV-DS-jXN" secondAttribute="centerY" id="Eis-vl-wdp"/>
-                                                                            <constraint firstItem="4xC-Du-TFm" firstAttribute="leading" secondItem="bFV-DS-jXN" secondAttribute="leading" id="Uea-g3-9sX"/>
-                                                                            <constraint firstItem="Q9X-1M-mdW" firstAttribute="leading" secondItem="bFV-DS-jXN" secondAttribute="leading" id="e9g-ko-8j9"/>
-                                                                            <constraint firstAttribute="height" constant="40" id="ymw-2z-kj5"/>
-                                                                        </constraints>
-                                                                    </view>
-                                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K4T-sr-GCn">
-                                                                        <rect key="frame" x="0.0" y="170" width="291" height="40"/>
-                                                                        <subviews>
-                                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" image="ic_left_arrow" translatesAutoresizingMaskIntoConstraints="NO" id="2MK-xq-4qn">
-                                                                                <rect key="frame" x="0.0" y="10" width="20" height="20"/>
-                                                                            </imageView>
-                                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O6c-vW-Few">
-                                                                                <rect key="frame" x="0.0" y="0.0" width="291" height="40"/>
-                                                                                <fontDescription key="fontDescription" name="SefidUI-Bold" family="Sefid UI" pointSize="17"/>
-                                                                                <state key="normal" title="جديد وحصرى">
-                                                                                    <color key="titleColor" name="very dark blue"/>
-                                                                                </state>
-                                                                            </button>
-                                                                        </subviews>
-                                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                        <constraints>
-                                                                            <constraint firstAttribute="height" constant="40" id="1rx-Oh-oJO"/>
-                                                                            <constraint firstAttribute="trailing" secondItem="O6c-vW-Few" secondAttribute="trailing" id="FUx-WP-1eE"/>
-                                                                            <constraint firstItem="2MK-xq-4qn" firstAttribute="leading" secondItem="K4T-sr-GCn" secondAttribute="leading" id="Fqy-F9-NF0"/>
-                                                                            <constraint firstItem="2MK-xq-4qn" firstAttribute="centerY" secondItem="K4T-sr-GCn" secondAttribute="centerY" id="LNG-dB-DSf"/>
-                                                                            <constraint firstItem="O6c-vW-Few" firstAttribute="leading" secondItem="K4T-sr-GCn" secondAttribute="leading" id="Zxt-yM-7tU"/>
-                                                                            <constraint firstItem="O6c-vW-Few" firstAttribute="top" secondItem="K4T-sr-GCn" secondAttribute="top" id="jM4-Ay-yWz"/>
-                                                                            <constraint firstAttribute="bottom" secondItem="O6c-vW-Few" secondAttribute="bottom" id="rnp-Yz-MAT"/>
-                                                                        </constraints>
-                                                                    </view>
-                                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QOn-Ik-iIh">
-                                                                        <rect key="frame" x="0.0" y="215" width="291" height="40"/>
-                                                                        <subviews>
-                                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" image="ic_left_arrow" translatesAutoresizingMaskIntoConstraints="NO" id="bTT-iB-XLX">
-                                                                                <rect key="frame" x="0.0" y="10" width="20" height="20"/>
-                                                                            </imageView>
-                                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fH9-sw-39y">
-                                                                                <rect key="frame" x="0.0" y="0.0" width="291" height="40"/>
-                                                                                <fontDescription key="fontDescription" name="SefidUI-Bold" family="Sefid UI" pointSize="17"/>
-                                                                                <state key="normal" title="الأكثر مشاهدة">
-                                                                                    <color key="titleColor" name="very dark blue"/>
-                                                                                </state>
-                                                                            </button>
-                                                                        </subviews>
-                                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                        <constraints>
-                                                                            <constraint firstItem="fH9-sw-39y" firstAttribute="leading" secondItem="QOn-Ik-iIh" secondAttribute="leading" id="8xs-1F-LpD"/>
-                                                                            <constraint firstAttribute="trailing" secondItem="fH9-sw-39y" secondAttribute="trailing" id="HnA-DM-Pib"/>
-                                                                            <constraint firstItem="bTT-iB-XLX" firstAttribute="centerY" secondItem="QOn-Ik-iIh" secondAttribute="centerY" id="Mht-Uy-9kr"/>
-                                                                            <constraint firstAttribute="height" constant="40" id="NMd-Xh-67t"/>
-                                                                            <constraint firstItem="fH9-sw-39y" firstAttribute="top" secondItem="QOn-Ik-iIh" secondAttribute="top" id="YHY-0z-V9m"/>
-                                                                            <constraint firstAttribute="bottom" secondItem="fH9-sw-39y" secondAttribute="bottom" id="gIv-6V-Kx9"/>
-                                                                            <constraint firstItem="bTT-iB-XLX" firstAttribute="leading" secondItem="QOn-Ik-iIh" secondAttribute="leading" id="tEk-jB-VCd"/>
-                                                                        </constraints>
-                                                                    </view>
+                                                                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="0aX-cN-FVk">
+                                                                            <size key="itemSize" width="291" height="77"/>
+                                                                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                                                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                                                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                                        </collectionViewFlowLayout>
+                                                                        <cells>
+                                                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" misplaced="YES" reuseIdentifier="category" id="bIg-uL-HHb" customClass="categoryCell" customModule="perfume" customModuleProvider="target">
+                                                                                <rect key="frame" x="0.0" y="0.0" width="291" height="77"/>
+                                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                                                                    <rect key="frame" x="0.0" y="0.0" width="291" height="77"/>
+                                                                                    <autoresizingMask key="autoresizingMask"/>
+                                                                                    <subviews>
+                                                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HFy-Hj-nYb">
+                                                                                            <rect key="frame" x="0.0" y="-13" width="291" height="26"/>
+                                                                                            <subviews>
+                                                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" image="ic_left_arrow" translatesAutoresizingMaskIntoConstraints="NO" id="E8W-nW-CO1">
+                                                                                                    <rect key="frame" x="0.0" y="3" width="20" height="20"/>
+                                                                                                </imageView>
+                                                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="نيش" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uYI-WD-zgJ">
+                                                                                                    <rect key="frame" x="20" y="0.0" width="271" height="26"/>
+                                                                                                    <fontDescription key="fontDescription" name="SefidUI-Bold" family="Sefid UI" pointSize="17"/>
+                                                                                                    <nil key="textColor"/>
+                                                                                                    <nil key="highlightedColor"/>
+                                                                                                </label>
+                                                                                            </subviews>
+                                                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                                            <constraints>
+                                                                                                <constraint firstItem="uYI-WD-zgJ" firstAttribute="top" secondItem="HFy-Hj-nYb" secondAttribute="top" id="9D1-Yn-NWA"/>
+                                                                                                <constraint firstItem="E8W-nW-CO1" firstAttribute="centerY" secondItem="HFy-Hj-nYb" secondAttribute="centerY" id="Vn7-1S-9M6"/>
+                                                                                                <constraint firstItem="E8W-nW-CO1" firstAttribute="leading" secondItem="HFy-Hj-nYb" secondAttribute="leading" id="Vvl-Q8-p5w"/>
+                                                                                                <constraint firstItem="uYI-WD-zgJ" firstAttribute="leading" secondItem="E8W-nW-CO1" secondAttribute="trailing" id="vMi-Sa-gJd"/>
+                                                                                                <constraint firstAttribute="bottom" secondItem="uYI-WD-zgJ" secondAttribute="bottom" id="vOH-xU-uHP"/>
+                                                                                                <constraint firstAttribute="trailing" secondItem="uYI-WD-zgJ" secondAttribute="trailing" id="ypC-NX-g0d"/>
+                                                                                            </constraints>
+                                                                                            <viewLayoutGuide key="safeArea" id="BdU-dX-qAv"/>
+                                                                                        </view>
+                                                                                    </subviews>
+                                                                                </view>
+                                                                                <constraints>
+                                                                                    <constraint firstItem="HFy-Hj-nYb" firstAttribute="leading" secondItem="bIg-uL-HHb" secondAttribute="leading" id="FLe-dj-SCn"/>
+                                                                                    <constraint firstAttribute="trailing" secondItem="HFy-Hj-nYb" secondAttribute="trailing" id="Gu4-pq-QDS"/>
+                                                                                    <constraint firstItem="HFy-Hj-nYb" firstAttribute="centerY" secondItem="bIg-uL-HHb" secondAttribute="centerY" id="trw-Uk-DxN"/>
+                                                                                </constraints>
+                                                                                <connections>
+                                                                                    <outlet property="title" destination="uYI-WD-zgJ" id="2se-St-BKH"/>
+                                                                                </connections>
+                                                                            </collectionViewCell>
+                                                                        </cells>
+                                                                        <connections>
+                                                                            <outlet property="dataSource" destination="8H6-1n-ggB" id="Ivy-uu-Qzd"/>
+                                                                            <outlet property="delegate" destination="8H6-1n-ggB" id="0oH-xZ-UaD"/>
+                                                                        </connections>
+                                                                    </collectionView>
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JM9-Zm-1AZ" userLabel="AboutUs">
-                                                                        <rect key="frame" x="0.0" y="260" width="291" height="40"/>
+                                                                        <rect key="frame" x="0.0" y="168" width="291" height="40"/>
                                                                         <subviews>
                                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" image="ic_left_arrow" translatesAutoresizingMaskIntoConstraints="NO" id="qGd-d5-tI0">
                                                                                 <rect key="frame" x="0.0" y="10" width="20" height="20"/>
@@ -392,7 +329,7 @@
                                                                         </constraints>
                                                                     </view>
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oMJ-Z3-tN2" userLabel="Policy">
-                                                                        <rect key="frame" x="0.0" y="305" width="291" height="40"/>
+                                                                        <rect key="frame" x="0.0" y="213" width="291" height="40"/>
                                                                         <subviews>
                                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" image="ic_left_arrow" translatesAutoresizingMaskIntoConstraints="NO" id="gR4-gg-85V">
                                                                                 <rect key="frame" x="0.0" y="10" width="20" height="20"/>
@@ -420,7 +357,7 @@
                                                                         </constraints>
                                                                     </view>
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PpW-qK-2FU" userLabel="ContactUs">
-                                                                        <rect key="frame" x="0.0" y="350" width="291" height="40"/>
+                                                                        <rect key="frame" x="0.0" y="258" width="291" height="40"/>
                                                                         <subviews>
                                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" image="ic_left_arrow" translatesAutoresizingMaskIntoConstraints="NO" id="Bno-EK-i48">
                                                                                 <rect key="frame" x="0.0" y="10" width="20" height="20"/>
@@ -489,6 +426,8 @@
                         <viewLayoutGuide key="safeArea" id="prZ-sa-bYT"/>
                     </view>
                     <connections>
+                        <outlet property="categoryCollectionHeight" destination="011-cb-Yem" id="yCS-uN-Ubo"/>
+                        <outlet property="categoryCollectionView" destination="mgj-Lm-Toy" id="AWu-D0-Vpe"/>
                         <outlet property="email" destination="kxH-hR-u50" id="iHl-Xx-vqw"/>
                         <outlet property="tableView" destination="7lc-Aj-MF1" id="xV4-dH-1L5"/>
                         <outlet property="tableViewHeight" destination="0Qn-p9-Sjw" id="wdH-dK-xnr"/>
@@ -563,7 +502,7 @@
     <resources>
         <image name="dark_bg" width="790" height="586"/>
         <image name="ic_left_arrow" width="20" height="20"/>
-        <image name="test" width="2048" height="1362"/>
+        <image name="logo" width="284" height="158"/>
         <namedColor name="Very Soft Orange.">
             <color red="0.96078431372549022" green="0.85490196078431369" blue="0.63137254901960782" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

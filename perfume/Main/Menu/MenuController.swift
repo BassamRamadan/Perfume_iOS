@@ -10,6 +10,9 @@ import UIKit
 class menuController: common, UITableViewDelegate, UITableViewDataSource {
         
         // MARK: - Outlets
+        @IBOutlet weak var categoryCollectionView: UICollectionView!
+        @IBOutlet weak var categoryCollectionHeight: NSLayoutConstraint!
+    
         let kHeaderSectionTag: Int = 6900;
         @IBOutlet weak var tableView: UITableView!
         @IBOutlet var tableViewHeight: NSLayoutConstraint!
@@ -21,6 +24,8 @@ class menuController: common, UITableViewDelegate, UITableViewDataSource {
         var expandedSectionHeader: UITableViewHeaderFooterView!
         var sectionItems: Array<Array<publicFilteringData>> = [[],[]]
         var sectionNames: Array<String> = []
+    
+        var categories = [publicFilteringData]()
         
         override func viewDidLoad() {
             super.viewDidLoad()
@@ -30,17 +35,31 @@ class menuController: common, UITableViewDelegate, UITableViewDataSource {
             
             username.text = CashedData.getUserName() ?? ""
             email.text = CashedData.getUserEmail() ?? ""
-            getBrands(){
+            
+            getCommonCategory(AppDelegate.LocalUrl+"/brands"){
                 (data) in
                 self.sectionItems[0] = data
                 self.tableView.reloadData()
                 self.updateConstraints()
                 
-                self.getGenders(){
+                self.getCommonCategory(AppDelegate.LocalUrl+"/genders"){
                     (data) in
                     self.sectionItems[1] = data
                     self.tableView.reloadData()
                     self.updateConstraints()
+                    
+                    self.getCommonCategory(AppDelegate.LocalUrl+"/categories"){
+                        (data) in
+                        self.categories.removeAll()
+                        for x in data{
+                            if x.name ?? "" == "العطور"{
+                                continue
+                            }
+                            self.categories.append(x)
+                        }
+                        self.categoryCollectionView.reloadData()
+                        self.updateConstraints()
+                    }
                 }
                 
             }
@@ -49,6 +68,9 @@ class menuController: common, UITableViewDelegate, UITableViewDataSource {
         func updateConstraints() {
             tableView.layoutIfNeeded()
             tableViewHeight.constant = tableView.contentSize.height
+            
+            categoryCollectionView.layoutIfNeeded()
+            categoryCollectionHeight.constant = categoryCollectionView.contentSize.height
         }
     
     
@@ -237,4 +259,22 @@ class menuController: common, UITableViewDelegate, UITableViewDataSource {
     
         
 }
-
+extension menuController: UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout{
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return categories.count
+    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return .init(width: collectionView.frame.width, height: 44)
+    }
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "category", for: indexPath) as! categoryCell
+        cell.title.text = categories[indexPath.row].name
+        return cell
+    }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        collectionView.deselectItem(at: indexPath, animated: true)
+        
+        openPerfumeResults(maps: ["categories": [categories[indexPath.row].id ?? 0]], pagTitle: categories[indexPath.row].name ?? "العطور")
+    }
+    
+}

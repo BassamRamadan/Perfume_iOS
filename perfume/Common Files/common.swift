@@ -207,8 +207,8 @@ class common : UIViewController , NVActivityIndicatorViewable{
 
 
 extension common {
-    func getGenders(complition :  @escaping (_ sectionItems: [publicFilteringData])->Void){
-        let url = AppDelegate.LocalUrl + "/genders"
+    
+    func getCommonCategory(_ url:String,complition :  @escaping (_ sectionItems: [publicFilteringData])->Void){
         let headers = [
             "Content-Type": "application/json" ,
             "Accept" : "application/json",
@@ -237,100 +237,7 @@ extension common {
             }
         }
     }
-    
-    
-    func getBrands(complition :  @escaping (_ sectionItems: [publicFilteringData])->Void){
-        let url = AppDelegate.LocalUrl + "/brands"
-        let headers = [
-            "Content-Type": "application/json" ,
-            "Accept" : "application/json",
-        ]
-        AlamofireRequests.getMethod(url: url, headers: headers) { (error, success, jsonData) in
-            do {
-                let decoder = JSONDecoder()
-                if error == nil {
-                    if success {
-                        let dataReceived = try decoder.decode(publicFiltering.self, from: jsonData)
-                        complition(dataReceived.data ?? [])
-                    }else{
-                        self.present(common.makeAlert(), animated: true, completion: nil)
-                        complition([])
-                    }
-                    
-                }else{
-                    let dataRecived = try decoder.decode(ErrorHandle.self, from: jsonData)
-                    self.present(common.makeAlert(message: dataRecived.message ?? ""), animated: true, completion: nil)
-                    complition([])
-                }
-            }catch {
-                self.present(common.makeAlert(), animated: true, completion: nil)
-                complition([])
-            }
-        }
-    }
-    
-    
-    func getTypes(complition :  @escaping (_ sectionItems: [publicFilteringData])->Void){
-        let url = AppDelegate.LocalUrl + "/types"
-        let headers = [
-            "Content-Type": "application/json" ,
-            "Accept" : "application/json",
-        ]
-        AlamofireRequests.getMethod(url: url, headers: headers) { (error, success, jsonData) in
-            do {
-                let decoder = JSONDecoder()
-                if error == nil {
-                    if success {
-                        let dataReceived = try decoder.decode(publicFiltering.self, from: jsonData)
-                        complition(dataReceived.data ?? [])
-                    }else{
-                        self.present(common.makeAlert(), animated: true, completion: nil)
-                        complition([])
-                    }
-                    
-                }else{
-                    let dataRecived = try decoder.decode(ErrorHandle.self, from: jsonData)
-                    self.present(common.makeAlert(message: dataRecived.message ?? ""), animated: true, completion: nil)
-                    complition([])
-                }
-            }catch {
-                self.present(common.makeAlert(), animated: true, completion: nil)
-                complition([])
-            }
-        }
-    }
-    
-    
-    func getConcentrations(complition :  @escaping (_ sectionItems: [publicFilteringData])->Void){
-        let url = AppDelegate.LocalUrl + "/concentrations"
-        let headers = [
-            "Content-Type": "application/json" ,
-            "Accept" : "application/json",
-        ]
-        AlamofireRequests.getMethod(url: url, headers: headers) { (error, success, jsonData) in
-            do {
-                let decoder = JSONDecoder()
-                if error == nil {
-                    if success {
-                        let dataReceived = try decoder.decode(publicFiltering.self, from: jsonData)
-                        complition(dataReceived.data ?? [])
-                    }else{
-                        self.present(common.makeAlert(), animated: true, completion: nil)
-                        complition([])
-                    }
-                    
-                }else{
-                    let dataRecived = try decoder.decode(ErrorHandle.self, from: jsonData)
-                    self.present(common.makeAlert(message: dataRecived.message ?? ""), animated: true, completion: nil)
-                    complition([])
-                }
-            }catch {
-                self.present(common.makeAlert(), animated: true, completion: nil)
-                complition([])
-            }
-        }
-    }
-    
+
     func getCart(complition : @escaping (_ CartItems:CartData?)->Void){
         let url = AppDelegate.LocalUrl + "/cart-items"
         let headers = [

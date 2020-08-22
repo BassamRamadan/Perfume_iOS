@@ -26,7 +26,7 @@ class SearchingController: ContentViewController {
         AppDelegate.firstBadge[2] = true
 
 
-        getFourMainCategory()
+        getThreeMainCategory()
         self.getProducts(maps: ["most_viewed":true]){
             (data , nextPageUrl,total) in
             self.moreViewsResults.removeAll()
@@ -39,22 +39,18 @@ class SearchingController: ContentViewController {
         super.viewWillAppear(animated)
         getCartItems(id: 2)
     }
-    fileprivate func getFourMainCategory() {
-        self.getBrands(){
+    fileprivate func getThreeMainCategory() {
+        self.getCommonCategory(AppDelegate.LocalUrl+"/brands"){
             (data) in
             self.ConvertToField("ماركة العطر", data, "brands_ids")
         }
-        self.getGenders(){
+        self.getCommonCategory(AppDelegate.LocalUrl+"/genders"){
             (data) in
             self.ConvertToField("الجنس", data, "genders")
         }
-        self.getTypes(){
+        self.getCommonCategory(AppDelegate.LocalUrl+"/types"){
             (data) in
             self.ConvertToField("النوع", data, "types")
-        }
-        self.getConcentrations(){
-            (data) in
-            self.ConvertToField("التركيز", data, "")
         }
     }
     
@@ -152,4 +148,11 @@ extension SearchingController: UITableViewDelegate , UITableViewDataSource{
         openPerfumeDetails(productDetails: self.moreViewsResults[indexPath.row])
     }
     
+}
+extension SearchingController:UISearchBarDelegate {
+
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+        openPerfumeResults(maps: ["name":searchBar.text ?? ""], pagTitle: searchBar.text ?? "")
+    }
 }

@@ -43,21 +43,17 @@ class Filtering: common  {
         })
     }
     fileprivate func getFourMainCategory() {
-        self.getBrands(){
+        self.getCommonCategory(AppDelegate.LocalUrl+"brands"){
             (data) in
             self.ConvertToField("ماركة العطر", data)
         }
-        self.getGenders(){
+        self.getCommonCategory(AppDelegate.LocalUrl+"genders"){
             (data) in
             self.ConvertToField("الجنس", data)
         }
-        self.getTypes(){
+        self.getCommonCategory(AppDelegate.LocalUrl+"types"){
             (data) in
             self.ConvertToField("النوع", data)
-        }
-        self.getConcentrations(){
-            (data) in
-            self.ConvertToField("التركيز", data)
         }
     }
     

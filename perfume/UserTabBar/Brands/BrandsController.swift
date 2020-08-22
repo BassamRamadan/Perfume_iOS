@@ -18,44 +18,19 @@ class BrandsController: ContentViewController {
         
         
         AppDelegate.firstBadge[1] = true
-        getBrands()
+        
+        self.getCommonCategory(AppDelegate.LocalUrl+"/brands"){
+            (data) in
+            self.Brands.removeAll()
+            self.Brands.append(contentsOf: data)
+            self.BrandsCollection.reloadData()
+        }
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         getCartItems(id: 1)
     }
-    // MARK:- Alamofire
-    fileprivate func getBrands(){
-        self.loading()
-        let url = AppDelegate.LocalUrl + "/brands"
-        let headers = [
-            "Content-Type": "application/json" ,
-            "Accept" : "application/json",
-        ]
-        AlamofireRequests.getMethod(url: url, headers: headers) { (error, success, jsonData) in
-            do {
-                let decoder = JSONDecoder()
-                if error == nil {
-                    if success {
-                        let dataReceived = try decoder.decode(publicFiltering.self, from: jsonData)
-                        self.Brands.removeAll()
-                        self.Brands.append(contentsOf: dataReceived.data ?? [])
-                        self.BrandsCollection.reloadData()
-                    }else{
-                        self.present(common.makeAlert(), animated: true, completion: nil)
-                    }
-                    self.stopAnimating()
-                }else{
-                    let dataRecived = try decoder.decode(ErrorHandle.self, from: jsonData)
-                    self.present(common.makeAlert(message: dataRecived.message ?? ""), animated: true, completion: nil)
-                    self.stopAnimating()
-                }
-            }catch {
-                self.present(common.makeAlert(), animated: true, completion: nil)
-                self.stopAnimating()
-            }
-        }
-    }
+    
 }
 extension BrandsController: UICollectionViewDataSource , UICollectionViewDelegate , UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

@@ -42,6 +42,7 @@
 		5865579324A0011600A12C1C /* Products.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5865579224A0011600A12C1C /* Products.swift */; };
 		5865579524A0037A00A12C1C /* perfumeResultsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5865579424A0037A00A12C1C /* perfumeResultsCell.swift */; };
 		5865CA302453F0E900F6CAB4 /* UserAccount.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5865CA2F2453F0E900F6CAB4 /* UserAccount.storyboard */; };
+		5869873624F103D7003D2C34 /* category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5869873524F103D7003D2C34 /* category.swift */; };
 		586FD58E24D940DE007137CF /* HorizontalItemList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586FD58D24D940DE007137CF /* HorizontalItemList.swift */; };
 		5872F88424A7F23400F39F6B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5872F88324A7F23300F39F6B /* GoogleService-Info.plist */; };
 		5874A8B7244993C100907AE0 /* MenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5874A8B6244993C100907AE0 /* MenuController.swift */; };
@@ -129,6 +130,7 @@
 		5865579224A0011600A12C1C /* Products.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Products.swift; sourceTree = "<group>"; };
 		5865579424A0037A00A12C1C /* perfumeResultsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = perfumeResultsCell.swift; sourceTree = "<group>"; };
 		5865CA2F2453F0E900F6CAB4 /* UserAccount.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UserAccount.storyboard; sourceTree = "<group>"; };
+		5869873524F103D7003D2C34 /* category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = category.swift; sourceTree = "<group>"; };
 		586FD58D24D940DE007137CF /* HorizontalItemList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalItemList.swift; sourceTree = "<group>"; };
 		5872F88324A7F23300F39F6B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5874A8B6244993C100907AE0 /* MenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuController.swift; sourceTree = "<group>"; };
@@ -487,6 +489,7 @@
 				5865579224A0011600A12C1C /* Products.swift */,
 				58E4784F24A498C3005E257A /* FavoriteClass.swift */,
 				58A6CFDE24A6D75800AFEB39 /* taxClass.swift */,
+				5869873524F103D7003D2C34 /* category.swift */,
 			);
 			path = Modeling;
 			sourceTree = "<group>";
@@ -668,6 +671,7 @@
 				5874A8B92449957800907AE0 /* HomeViewController.swift in Sources */,
 				586FD58E24D940DE007137CF /* HorizontalItemList.swift in Sources */,
 				585B08252454636C0093E2A8 /* Favorite.swift in Sources */,
+				5869873624F103D7003D2C34 /* category.swift in Sources */,
 				588BE85A244F474B00510BD6 /* Cells.swift in Sources */,
 				58A6CFDD24A6D4A100AFEB39 /* MoveToMain.swift in Sources */,
 				5884ED7224E1E6840068C25E /* bankCell.swift in Sources */,

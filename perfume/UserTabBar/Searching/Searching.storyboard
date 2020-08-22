@@ -43,6 +43,9 @@
                                                             <string>Title</string>
                                                             <string>Title</string>
                                                         </scopeButtonTitles>
+                                                        <connections>
+                                                            <outlet property="delegate" destination="avu-lf-gaO" id="tN4-E4-bkZ"/>
+                                                        </connections>
                                                     </searchBar>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="كلمات البحث" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F6S-aV-dCg">
                                                         <rect key="frame" x="0.0" y="66" width="374" height="27.5"/>
