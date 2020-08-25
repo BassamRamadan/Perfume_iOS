@@ -13,15 +13,23 @@ class Login: common , UIScrollViewDelegate{
     @IBOutlet var BagroundImage : UIImageView!
     @IBOutlet weak var userName: UITextField!
     @IBOutlet weak var password: UITextField!
-    
+    @IBOutlet weak var userSperator: UIView!
+    @IBOutlet weak var passSperator: UIView!
     // MARK:- ViewDidload
     override func viewDidLoad() {
         super.viewDidLoad()
         
         
-        ScrollView.delegate = self
+        setupAllDelegate()
     }
-    
+    func setupAllDelegate(){
+        userName.becomeFirstResponder()
+        ScrollView.delegate = self
+        userName.delegate = self
+        password.delegate = self
+        userName.placeholder = ""
+        password.placeholder = ""
+    }
     @IBAction func check(_ sender: UIButton) {
         if sender.imageView?.image == #imageLiteral(resourceName: "checked") {
             sender.setImage(#imageLiteral(resourceName: "check"), for: .normal)
@@ -86,7 +94,21 @@ class Login: common , UIScrollViewDelegate{
         openRegisteringPage(pagTitle: "forgetPass")
     }
     @IBAction func back(_ sender: UIButton) {
-       self.navigationController?.dismiss(animated: true)
+       openMain()
     }
 
+}
+extension Login: UITextFieldDelegate{
+    
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        if textField == userName{
+            userSperator.backgroundColor = UIColor(named: "dark Magenta")
+            passSperator.backgroundColor = UIColor(named: "separator")
+        }else{
+            userSperator.backgroundColor = UIColor(named: "separator")
+            passSperator.backgroundColor = UIColor(named: "dark Magenta")
+        }
+        
+        return true
+    }
 }

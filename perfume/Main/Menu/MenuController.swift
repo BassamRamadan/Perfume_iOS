@@ -19,6 +19,7 @@ class menuController: common, UITableViewDelegate, UITableViewDataSource {
     
         @IBOutlet var username: UILabel!
         @IBOutlet var email: UILabel!
+        @IBOutlet var image: UIImageView!
     
         var expandedSectionHeaderNumber: Int = -1
         var expandedSectionHeader: UITableViewHeaderFooterView!
@@ -33,9 +34,11 @@ class menuController: common, UITableViewDelegate, UITableViewDataSource {
             sectionNames = [ "الماركات", "العطور"];
             self.tableView!.tableFooterView = UIView()
             
-            username.text = CashedData.getUserName() ?? ""
-            email.text = CashedData.getUserEmail() ?? ""
-            
+            if CashedData.getUserApiKey() != ""{
+                username.text = CashedData.getUserName() ?? ""
+                email.text = CashedData.getUserEmail() ?? ""
+                image.sd_setImage(with: URL(string: CashedData.getUserImage() ?? ""))
+            }
             getCommonCategory(AppDelegate.LocalUrl+"/brands"){
                 (data) in
                 self.sectionItems[0] = data

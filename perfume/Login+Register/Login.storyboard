@@ -157,7 +157,7 @@
                                                                                 <subviews>
                                                                                     <view contentMode="scaleToFill" horizontalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8Hm-Yi-5UZ">
                                                                                         <rect key="frame" x="10" y="0.0" width="300" height="1"/>
-                                                                                        <color key="backgroundColor" name="separator"/>
+                                                                                        <color key="backgroundColor" name="dark Magenta"/>
                                                                                     </view>
                                                                                 </subviews>
                                                                                 <constraints>
@@ -365,8 +365,11 @@
                         <outlet property="BagroundImage" destination="hsj-Um-yWU" id="mt0-VI-l9U"/>
                         <outlet property="ScrollView" destination="s1X-ax-JSa" id="Xms-cQ-LZN"/>
                         <outlet property="code" destination="ntE-ZP-dcP" id="3yK-o5-cac"/>
+                        <outlet property="codeSeperator" destination="8Hm-Yi-5UZ" id="YLV-fn-Xsw"/>
                         <outlet property="configPass" destination="ECI-y5-oVh" id="Cl9-IT-d4N"/>
+                        <outlet property="configSeperator" destination="aP7-Iv-0tT" id="8yu-zY-jy3"/>
                         <outlet property="pass" destination="T0g-tB-4zQ" id="MKO-uV-9ra"/>
+                        <outlet property="passSeperator" destination="Y1x-2v-5k2" id="bc3-DH-CEz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Azc-W5-F3u" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -499,7 +502,7 @@
                                                                                 <subviews>
                                                                                     <view contentMode="scaleToFill" horizontalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="z5T-Fu-87w">
                                                                                         <rect key="frame" x="10" y="0.0" width="300" height="1"/>
-                                                                                        <color key="backgroundColor" name="separator"/>
+                                                                                        <color key="backgroundColor" name="dark Magenta"/>
                                                                                     </view>
                                                                                 </subviews>
                                                                                 <constraints>
@@ -722,7 +725,7 @@
                                                                                 <subviews>
                                                                                     <view contentMode="scaleToFill" horizontalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="AP6-0S-JVU">
                                                                                         <rect key="frame" x="10" y="0.0" width="300" height="1"/>
-                                                                                        <color key="backgroundColor" name="separator"/>
+                                                                                        <color key="backgroundColor" name="dark Magenta"/>
                                                                                     </view>
                                                                                 </subviews>
                                                                                 <constraints>
@@ -1014,10 +1017,14 @@
                         <outlet property="PageDescription" destination="8kC-iI-2bT" id="wPP-Ni-jHA"/>
                         <outlet property="ScrollView" destination="hnH-nd-yJ7" id="KB8-UO-fdS"/>
                         <outlet property="configPass" destination="cnf-Ap-SnI" id="lVM-nH-wso"/>
+                        <outlet property="configSeperator" destination="c9Z-SZ-Ckv" id="2Rc-oI-7sp"/>
                         <outlet property="email" destination="BK1-Ik-eby" id="BIW-2G-hZY"/>
+                        <outlet property="emailSeperator" destination="RxP-A5-4RV" id="wtz-F3-JyT"/>
                         <outlet property="name" destination="fcE-YJ-Nyf" id="YpG-O2-Ih8"/>
+                        <outlet property="nameSeperator" destination="AP6-0S-JVU" id="Hjz-L4-ZX0"/>
                         <outlet property="pageTitle" destination="QFP-4Q-QNO" id="wzP-W7-wv1"/>
                         <outlet property="pass" destination="RP2-7m-KFa" id="Opd-jn-KWG"/>
+                        <outlet property="passSeperator" destination="clz-jQ-Iyb" id="tdq-Jd-P0c"/>
                         <outlet property="policyStack" destination="GqL-w4-bcY" id="0zC-bS-GJ5"/>
                         <outlet property="submit" destination="0I6-xi-tYH" id="K1E-P1-Chv"/>
                     </connections>
@@ -1204,7 +1211,7 @@
                                                                                 <subviews>
                                                                                     <view contentMode="scaleToFill" horizontalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="st2-Qi-Bv8">
                                                                                         <rect key="frame" x="10" y="0.0" width="300" height="1"/>
-                                                                                        <color key="backgroundColor" name="separator"/>
+                                                                                        <color key="backgroundColor" name="dark Magenta"/>
                                                                                     </view>
                                                                                 </subviews>
                                                                                 <constraints>
@@ -1442,8 +1449,10 @@
                     <connections>
                         <outlet property="BagroundImage" destination="wtN-bB-dLw" id="sUP-NA-nq4"/>
                         <outlet property="ScrollView" destination="HDo-lE-Cqb" id="dxu-un-XDp"/>
+                        <outlet property="passSperator" destination="P2L-YJ-ayP" id="rVR-56-ozw"/>
                         <outlet property="password" destination="b5Q-wg-dHO" id="nBU-K0-VBt"/>
                         <outlet property="userName" destination="C8d-cN-j9A" id="FcJ-PI-6nb"/>
+                        <outlet property="userSperator" destination="st2-Qi-Bv8" id="sJd-bA-X2W"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="F3d-6u-3Av" userLabel="First Responder" sceneMemberID="firstResponder"/>

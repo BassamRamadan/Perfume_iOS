@@ -429,6 +429,7 @@
                         <outlet property="categoryCollectionHeight" destination="011-cb-Yem" id="yCS-uN-Ubo"/>
                         <outlet property="categoryCollectionView" destination="mgj-Lm-Toy" id="AWu-D0-Vpe"/>
                         <outlet property="email" destination="kxH-hR-u50" id="iHl-Xx-vqw"/>
+                        <outlet property="image" destination="VZy-qF-mxF" id="PXt-Kw-57d"/>
                         <outlet property="tableView" destination="7lc-Aj-MF1" id="xV4-dH-1L5"/>
                         <outlet property="tableViewHeight" destination="0Qn-p9-Sjw" id="wdH-dK-xnr"/>
                         <outlet property="username" destination="xGg-CE-EiS" id="Sze-Zq-MkN"/>

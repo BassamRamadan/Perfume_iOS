@@ -15,12 +15,25 @@ class resetPassword: common, UIScrollViewDelegate{
     @IBOutlet var pass : UITextField!
     @IBOutlet var configPass : UITextField!
     
+    @IBOutlet var codeSeperator : UIView!
+    @IBOutlet var passSeperator : UIView!
+    @IBOutlet var configSeperator : UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        ScrollView.delegate = self
+        setupAllDelegate()
     }
     
+    func setupAllDelegate(){
+        ScrollView.delegate = self
+        pass.delegate = self
+        code.delegate = self
+        configPass.delegate = self
+        pass.placeholder = ""
+        code.placeholder = ""
+        configPass.placeholder = ""
+    }
      // MARK:- Actions
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
         BagroundImage.transform = CGAffineTransform(translationX: 0, y: ((ScrollView.contentOffset.y/2)+22) * -1)
@@ -67,5 +80,28 @@ class resetPassword: common, UIScrollViewDelegate{
                 self.stopAnimating()
             }
         }
+    }
+}
+extension resetPassword: UITextFieldDelegate{
+    
+    func switchSeperator(){
+        codeSeperator.backgroundColor = UIColor(named: "separator")
+        passSeperator.backgroundColor = UIColor(named: "separator")
+        configSeperator.backgroundColor = UIColor(named: "separator")
+    }
+    
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        switchSeperator()
+        switch textField {
+        case code:
+            codeSeperator.backgroundColor = UIColor(named: "dark Magenta")
+        case pass:
+            passSeperator.backgroundColor = UIColor(named: "dark Magenta")
+        default:
+            configSeperator.backgroundColor = UIColor(named: "dark Magenta")
+            
+        }
+        
+        return true
     }
 }

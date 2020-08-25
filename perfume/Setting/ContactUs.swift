@@ -42,8 +42,10 @@ class ContactUs: common {
     }
     
     fileprivate func setUserData(){
-        email.text = CashedData.getUserEmail() ?? ""
-        name.text = CashedData.getUserName() ?? ""
+        if CashedData.getUserApiKey() != ""{
+            email.text = CashedData.getUserEmail() ?? ""
+            name.text = CashedData.getUserName() ?? ""
+        }
     }
     
     // MARK:- Alamofire

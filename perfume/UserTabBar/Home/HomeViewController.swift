@@ -33,6 +33,7 @@ class HomeViewController: ContentViewController{
             self.updateConstraints()
         }
         self.getProducts(maps: ["most_viewed":true]){
+            
             (data , nextPageUrl,total) in
             self.moreViewsResults.removeAll()
             self.moreViewsResults.append(contentsOf: data ?? [])
@@ -55,10 +56,15 @@ class HomeViewController: ContentViewController{
     }
     // MARK:-  Actions
     @IBAction func toResults(sender: UIButton){
-        if sender.tag == 2{
-            openPerfumeResults(maps: ["most_viewed":true], pagTitle: "الأكثر مشاهدة")
-        }else{
+        switch sender.tag {
+        case 1:
+            openPerfumeResults(maps: ["categories":[6]], pagTitle: "عروض وتخفيضات")
+        case 2:
+            openPerfumeResults(maps: ["categories":[5]], pagTitle: "العطور العربيه")
+        case 3:
             openPerfumeResults(maps: [:], pagTitle: "جديد وحصرى")
+        default:
+            openPerfumeResults(maps: ["most_viewed":true], pagTitle: "الأكثر مشاهدة")
         }
     }
     

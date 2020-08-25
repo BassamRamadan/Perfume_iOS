@@ -22,6 +22,12 @@ class Sign: common, UIScrollViewDelegate{
     @IBOutlet var email : UITextField!
     @IBOutlet var pass : UITextField!
     @IBOutlet var configPass : UITextField!
+    
+    @IBOutlet var nameSeperator : UIView!
+    @IBOutlet var emailSeperator : UIView!
+    @IBOutlet var passSeperator : UIView!
+    @IBOutlet var configSeperator : UIView!
+    
     @IBOutlet var submit : UIButton!
     
     override func viewDidLoad() {
@@ -35,9 +41,19 @@ class Sign: common, UIScrollViewDelegate{
             email.text = CashedData.getUserEmail() ?? ""
             policyStack.isHidden = true
         }
-        ScrollView.delegate = self
+        setupAllDelegate()
     }
-    
+    func setupAllDelegate(){
+        ScrollView.delegate = self
+        name.delegate = self
+        pass.delegate = self
+        email.delegate = self
+        configPass.delegate = self
+        name.placeholder = ""
+        pass.placeholder = ""
+        email.placeholder = ""
+        configPass.placeholder = ""
+    }
      // MARK:- Actions
     
     @IBAction func check(_ sender: UIButton) {
@@ -133,5 +149,31 @@ class Sign: common, UIScrollViewDelegate{
                 self.stopAnimating()
             }
         }
+    }
+}
+extension Sign: UITextFieldDelegate{
+    
+    func switchSeperator(){
+        nameSeperator.backgroundColor = UIColor(named: "separator")
+        emailSeperator.backgroundColor = UIColor(named: "separator")
+        passSeperator.backgroundColor = UIColor(named: "separator")
+        configSeperator.backgroundColor = UIColor(named: "separator")
+    }
+    
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        switchSeperator()
+        switch textField {
+            case name:
+                nameSeperator.backgroundColor = UIColor(named: "dark Magenta")
+            case email:
+                emailSeperator.backgroundColor = UIColor(named: "dark Magenta")
+            case pass:
+                passSeperator.backgroundColor = UIColor(named: "dark Magenta")
+            default:
+                configSeperator.backgroundColor = UIColor(named: "dark Magenta")
+            
+        }
+        
+        return true
     }
 }

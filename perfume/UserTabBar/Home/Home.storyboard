@@ -196,7 +196,7 @@
                                                                                                 <color key="textColor" name="very dark blue"/>
                                                                                                 <nil key="highlightedColor"/>
                                                                                             </label>
-                                                                                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="bottom" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZiG-aV-Qfj">
+                                                                                            <button opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="bottom" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZiG-aV-Qfj">
                                                                                                 <rect key="frame" x="0.0" y="0.0" width="182" height="70"/>
                                                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                                 <state key="normal" image="arabic_perfume">
@@ -207,6 +207,9 @@
                                                                                                         <integer key="value" value="5"/>
                                                                                                     </userDefinedRuntimeAttribute>
                                                                                                 </userDefinedRuntimeAttributes>
+                                                                                                <connections>
+                                                                                                    <action selector="toResultsWithSender:" destination="jXe-hO-6a4" eventType="touchUpInside" id="wWN-Vh-SAj"/>
+                                                                                                </connections>
                                                                                             </button>
                                                                                         </subviews>
                                                                                         <color key="backgroundColor" name="Very Soft Orange."/>
@@ -236,7 +239,7 @@
                                                                                                 <color key="textColor" name="very dark blue"/>
                                                                                                 <nil key="highlightedColor"/>
                                                                                             </label>
-                                                                                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="bottom" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dcT-qD-byY">
+                                                                                            <button opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="bottom" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dcT-qD-byY">
                                                                                                 <rect key="frame" x="0.0" y="0.0" width="182" height="70"/>
                                                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                                 <state key="normal" image="offers"/>
@@ -245,6 +248,9 @@
                                                                                                         <integer key="value" value="5"/>
                                                                                                     </userDefinedRuntimeAttribute>
                                                                                                 </userDefinedRuntimeAttributes>
+                                                                                                <connections>
+                                                                                                    <action selector="toResultsWithSender:" destination="jXe-hO-6a4" eventType="touchUpInside" id="0si-L7-R4P"/>
+                                                                                                </connections>
                                                                                             </button>
                                                                                         </subviews>
                                                                                         <color key="backgroundColor" name="soft Orange."/>
@@ -280,7 +286,7 @@
                                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" image="ic_go_arrow" translatesAutoresizingMaskIntoConstraints="NO" id="zbR-77-ZmB">
                                                                                 <rect key="frame" x="0.0" y="15" width="20" height="20"/>
                                                                             </imageView>
-                                                                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WRz-kX-gDK">
+                                                                            <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WRz-kX-gDK">
                                                                                 <rect key="frame" x="0.0" y="0.0" width="374" height="50"/>
                                                                                 <fontDescription key="fontDescription" name="SefidUI-Bold" family="Sefid UI" pointSize="16"/>
                                                                                 <state key="normal" title="جديد وحصرى">
@@ -557,7 +563,7 @@
                                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" image="ic_go_arrow" translatesAutoresizingMaskIntoConstraints="NO" id="e4S-BD-We1">
                                                                                 <rect key="frame" x="0.0" y="15" width="20" height="20"/>
                                                                             </imageView>
-                                                                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YSG-jL-BED">
+                                                                            <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YSG-jL-BED">
                                                                                 <rect key="frame" x="0.0" y="0.0" width="374" height="50"/>
                                                                                 <fontDescription key="fontDescription" name="SefidUI-Bold" family="Sefid UI" pointSize="16"/>
                                                                                 <state key="normal" title="الأكثر مشاهدة">

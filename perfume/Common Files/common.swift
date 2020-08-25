@@ -72,6 +72,7 @@ class common : UIViewController , NVActivityIndicatorViewable{
             let appDelegate = UIApplication.shared.delegate
             appDelegate?.window??.rootViewController = linkingVC
         }else{
+            linkingVC.modalPresentationStyle = .fullScreen
             self.present(linkingVC,animated: true,completion: nil)
         }
     }
@@ -288,7 +289,11 @@ extension common {
                         self.present(common.makeAlert(message: "تم الإضافة الى العربة"), animated: true, completion: nil)
                        complition(true)
                     }else{
-                        self.present(common.makeAlert(), animated: true, completion: nil)
+                        if CashedData.getUserApiKey() == ""{
+                            self.present(common.makeAlert(message: "عذرا انت غير مسجل دخولك برجاء تسجيل الدخول أو إنشاء حساب جديد"), animated: true, completion: nil)
+                        }else{
+                            self.present(common.makeAlert(), animated: true, completion: nil)
+                        }
                     }
                     self.stopAnimating()
                 }else{
@@ -388,7 +393,11 @@ extension common {
                         self.present(common.makeAlert(message: alertText), animated: true, completion: nil)
                         complition(true)
                     }else{
-                        self.present(common.makeAlert(), animated: true, completion: nil)
+                        if CashedData.getUserApiKey() == ""{
+                            self.present(common.makeAlert(message: "عذرا انت غير مسجل دخولك برجاء تسجيل الدخول أو إنشاء حساب جديد"), animated: true, completion: nil)
+                        }else{
+                            self.present(common.makeAlert(), animated: true, completion: nil)
+                        }
                     }
                     self.stopAnimating()
                 }else{
