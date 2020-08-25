@@ -13,6 +13,7 @@ class Cart: common {
     @IBOutlet var CartTable: UITableView!
     @IBOutlet var totalCost: UILabel!
     var CartItems: CartData?
+    var cartEditedItem = [Int]()
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -24,8 +25,14 @@ class Cart: common {
         getCart{
             (data) in
             self.CartItems = data
-            self.totalCost.text = self.CartItems?.totalCost ?? "0.0"
-            self.CartTable.reloadData()
+            for (i,x) in (data?.items?.enumerated())!{
+                self.cartEditedItem.append(Int(x.quantity ?? "0") ?? 0)
+                print(self.cartEditedItem[i])
+                if i == (data?.items?.count ?? 0)-1{
+                    self.totalCost.text = self.CartItems?.totalCost ?? "0.0"
+                    self.CartTable.reloadData()
+                }
+            }
         }
     }
     required init?(coder aDecoder: NSCoder) {
@@ -34,35 +41,27 @@ class Cart: common {
     }
     // MARK:- Actions
     @IBAction func Minus(sender : UIButton){
-        let indexPath = IndexPath(row: sender.tag, section: 0)
-        let cell = CartTable.cellForRow(at: indexPath) as! CartCell
-        cell.edit.isHidden = false
-        var x = Int((cell.quantity.text)!)
-        x = x! - 1
-        x = max(x!,1)
-        cell.quantity.text = "\(x!)"
+        cartEditedItem[sender.tag] -= 1
+        let prices = self.CartItems?.items?[sender.tag]
+        let price = getPriceAfterDiscount(price: prices?.price ?? "", discount: prices?.discount ?? "")
+        self.totalCost.text = getSum(self.totalCost.text ?? "",price, "-")
+        CartTable.reloadData()
     }
     
     @IBAction func Plus(sender : UIButton){
-        let indexPath = IndexPath(row: sender.tag, section: 0)
-        let cell = CartTable.cellForRow(at: indexPath) as! CartCell
-        cell.edit.isHidden = false
-        var x = Int((cell.quantity.text)!)
-        x = x! + 1
-        cell.quantity.text = "\(x!)"
+        cartEditedItem[sender.tag] += 1
+        let prices = self.CartItems?.items?[sender.tag]
+        let price = getPriceAfterDiscount(price: prices?.price ?? "", discount: prices?.discount ?? "")
+        self.totalCost.text = getSum(self.totalCost.text ?? "",price, "+")
+        CartTable.reloadData()
     }
-    
-    @IBAction func Edit(sender: UIButton){
-        let indexPath = IndexPath(row: sender.tag, section: 0)
-        let cell = CartTable.cellForRow(at: indexPath) as! CartCell
-        self.EditAndDeletItem(CartId: self.CartItems?.cartID, CartItemId: self.CartItems?.items?[sender.tag].id,quantity: cell.quantity?.text)
-    }
+   
     @IBAction func Delet(sender: UIButton){
         let alert = UIAlertController(title: "تنبيه", message: "هل تريد الحذف بالفعل" , preferredStyle: UIAlertController.Style.alert)
         alert.addAction(UIAlertAction(title: "لا أوافق", style: .default, handler: { action in
         }))
         alert.addAction(UIAlertAction(title: "موافق", style: .default, handler: { action in
-            self.EditAndDeletItem(CartId: self.CartItems?.cartID, CartItemId: self.CartItems?.items?[sender.tag].id)
+            self.EditAndDeletItem(CartId: self.CartItems?.cartID, CartItemId: self.CartItems?.items?[sender.tag].id,isEditing: false)
         }))
         self.present(alert, animated: true, completion: nil)
     }
@@ -78,19 +77,25 @@ class Cart: common {
         if self.CartItems?.items?.count ?? 0 == 0{
             return
         }
+        EditAndDeletItem(CartId: CartItems?.cartID ?? 0, CartItemId: 1)
         
-        let storyboard = UIStoryboard(name: "Shopping", bundle: nil)
-        let linkingVC = storyboard.instantiateViewController(withIdentifier: "Shopping") as! ShoppingAndPaymentInformation
-        linkingVC.CartId = self.CartItems?.cartID
-        linkingVC.parsingCost = self.CartItems?.totalCost
-        
-        linkingVC.modalPresentationStyle = .fullScreen
-        navigationController?.pushViewController(linkingVC, animated: true)
+    }
+    func getSum(_ total: String,_ price: String,_ op: String) -> String{
+        var IntPrice:Double? = Double(total.replacingOccurrences(of: ",", with: ""))
+        let IntDiscount:Double? = Double(price)
+        if let p = IntDiscount{
+            if op == "+"{
+                IntPrice = (IntPrice ?? 0.0) + (p)
+            }else{
+                IntPrice = (IntPrice ?? 0.0) - (p)
+            }
+        }
+        return "\(IntPrice ?? 0.0)"
     }
     
     // MARK:- Alamofire
     
-    func EditAndDeletItem(CartId: Int? , CartItemId: Int?,quantity: String? = nil){
+    func EditAndDeletItem(CartId: Int? , CartItemId: Int?,isEditing: Bool = true){
         self.loading()
         var url = AppDelegate.LocalUrl + "/delete-cart-item"
         let headers = [
@@ -102,13 +107,16 @@ class Cart: common {
             "cart_id": CartId ?? 0,
             "cart_item_id": CartItemId ?? 0
         ]
-        if quantity != nil {
+        if isEditing{
             // is Editing
-            info = [
-                "cart_id": CartId ?? 0,
-                "item_id": CartItemId ?? 0,
-                "quantity": (quantity ?? "0")
-                ]
+            var items = [cartItemsAfterUpdat]()
+            for (i,x) in (self.CartItems?.items?.enumerated())!{
+                items.append(.init(id: x.id ?? 0, quantity: cartEditedItem[i]))
+            }
+            let AllData = cartAfterUpdat(cart_id: CartId ?? 0,items: items)
+            let data = try! JSONEncoder.init().encode(AllData)
+            let dictionaryy = try! JSONSerialization.jsonObject(with: data) as! [String: Any]
+            info = dictionaryy
             url = AppDelegate.LocalUrl + "/edit-cart-item"
         }
         AlamofireRequests.PostMethod(methodType: "POST", url: url, info: info, headers: headers){
@@ -118,7 +126,11 @@ class Cart: common {
                 if error == nil {
                     if success {
                         self.stopAnimating()
-                        self.getCartItems()
+                        if isEditing{
+                            self.goToNextPage()
+                        }else{
+                            self.getCartItems()
+                        }
                     }else{
                         self.present(common.makeAlert(), animated: true, completion: nil)
                     }
@@ -133,6 +145,15 @@ class Cart: common {
                 self.stopAnimating()
             }
         }
+    }
+    func goToNextPage(){
+        let storyboard = UIStoryboard(name: "Shopping", bundle: nil)
+        let linkingVC = storyboard.instantiateViewController(withIdentifier: "Shopping") as! ShoppingAndPaymentInformation
+        linkingVC.CartId = self.CartItems?.cartID
+        linkingVC.parsingCost = self.CartItems?.totalCost
+        
+        linkingVC.modalPresentationStyle = .fullScreen
+        navigationController?.pushViewController(linkingVC, animated: true)
     }
 }
 extension Cart: UITableViewDelegate,UITableViewDataSource{
@@ -165,16 +186,13 @@ extension Cart: UITableViewDelegate,UITableViewDataSource{
             cell.type.text = cellData?.product?.types?[0].name ?? ""
         }
         cell.title.text = "\(cellData?.product?.brand?.name ?? "") \(cellData?.product?.name ?? "") \(cellData?.product?.concentration?.name ?? "")"
-        cell.quantity.text = cellData?.quantity ?? ""
+        cell.quantity.text = "\(cartEditedItem[indexPath.row])"
         cell.size.text = cellData?.size ?? ""
         
         cell.price.text = cellData?.price ?? "0"
         cell.priceAfterDiscount.text = getPriceAfterDiscount(price: cellData?.price ?? "0", discount: cellData?.discount ?? "0")
         
         cell.delet.tag = indexPath.row
-        cell.edit.tag = indexPath.row
-        cell.edit.isHidden = true
-        
         cell.plus.tag = indexPath.row
         cell.minus.tag = indexPath.row
         return cell
@@ -184,4 +202,22 @@ extension Cart: UITableViewDelegate,UITableViewDataSource{
     }
     
     
+}
+struct cartAfterUpdat: Codable{
+    internal init(cart_id: Int, items: [cartItemsAfterUpdat]) {
+        self.cart_id = cart_id
+        self.items = items
+    }
+    
+    let cart_id: Int
+    let items: [cartItemsAfterUpdat]
+    
+}
+struct cartItemsAfterUpdat: Codable{
+    internal init(id: Int, quantity: Int) {
+        self.id = id
+        self.quantity = quantity
+    }
+    
+    let id,quantity: Int
 }
