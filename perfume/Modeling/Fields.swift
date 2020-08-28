@@ -26,20 +26,23 @@ class FieldsData: Codable {
     let id: Int?
     let name: String?
     let values: [Value]?
+    let Values: [Value]?
     let fieldValue: Value?
     let field: FieldsData?
     enum CodingKeys: String, CodingKey {
         case fieldValue = "field_value"
         case values = "selected_values"
+        case Values = "values"
         case name , id , field
     }
     
-    init(id: Int?, name: String?, values: [Value]?,fieldValue: Value? = nil,field: FieldsData? = nil) {
+    init(id: Int?, name: String?, values: [Value]? = nil,Values: [Value]?,fieldValue: Value? = nil,field: FieldsData? = nil) {
         self.id = id
         self.name = name
         self.values = values
         self.fieldValue = fieldValue
         self.field = field
+        self.Values = Values
     }
 }
 

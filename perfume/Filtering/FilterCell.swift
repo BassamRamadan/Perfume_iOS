@@ -82,7 +82,7 @@ class FilterCell: UITableViewCell {
 }
 extension FilterCell: UITableViewDataSource , UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.FieldsData?.values?.count ?? 0
+        return self.FieldsData?.Values?.count ?? 0
     }
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 1
@@ -98,13 +98,13 @@ extension FilterCell: UITableViewDataSource , UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "FilterCell", for: indexPath) as! valueCell
         
-        cell.name.text = self.FieldsData?.values?[indexPath.row].value ?? ""
-        cell.check.tag = self.FieldsData?.values?[indexPath.row].id ?? 0
+        cell.name.text = self.FieldsData?.Values?[indexPath.row].value ?? ""
+        cell.check.tag = self.FieldsData?.Values?[indexPath.row].id ?? 0
         
         cell.count.isHidden = true
         if self.showCountInSections.firstIndex(of: self.section ?? "") != nil{
             cell.count.isHidden = false
-            cell.count.text = "\(self.FieldsData?.values?[indexPath.row].productsCount ?? 0)"
+            cell.count.text = "\(self.FieldsData?.Values?[indexPath.row].productsCount ?? 0)"
         }
         cell.check.setBackgroundImage(#imageLiteral(resourceName: "check"), for: .normal)
         

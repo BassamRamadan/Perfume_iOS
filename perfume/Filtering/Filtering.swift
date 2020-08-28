@@ -43,15 +43,15 @@ class Filtering: common  {
         })
     }
     fileprivate func getFourMainCategory() {
-        self.getCommonCategory(AppDelegate.LocalUrl+"brands"){
+        self.getCommonCategory(AppDelegate.LocalUrl+"/brands"){
             (data) in
             self.ConvertToField("ماركة العطر", data)
         }
-        self.getCommonCategory(AppDelegate.LocalUrl+"genders"){
+        self.getCommonCategory(AppDelegate.LocalUrl+"/genders"){
             (data) in
             self.ConvertToField("الجنس", data)
         }
-        self.getCommonCategory(AppDelegate.LocalUrl+"types"){
+        self.getCommonCategory(AppDelegate.LocalUrl+"/types"){
             (data) in
             self.ConvertToField("النوع", data)
         }
@@ -61,7 +61,7 @@ class Filtering: common  {
         guard data.count != 0 else{
             return
         }
-        self.FieldsArr.append(FieldsData(id: 0, name: name, values:
+        self.FieldsArr.append(FieldsData(id: 0, name: name, Values:
             data.map{(row) ->Value in
                 return Value(id: row.id ?? 0, value: row.name ?? "",productsCount: row.productsCount ?? 0)
             }
