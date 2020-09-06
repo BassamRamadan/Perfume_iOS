@@ -144,7 +144,7 @@ class perfumeDetails: ContentViewController{
         infoTableViewHeight.constant = infoTableView.contentSize.height
     }
     fileprivate func setupHorizontalScrollView(){
-        horizontalScrollView = UIScrollView(frame: .init(x: 0, y: 0, width: view.frame.width, height: 280))
+        horizontalScrollView = UIScrollView(frame: .init(x: 0, y: 0, width: view.frame.width, height: 300))
         horizontalScrollView.delegate = self
         horizontalScrollView.isPagingEnabled = true
         horizontalScrollView.showsHorizontalScrollIndicator = false
